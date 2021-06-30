@@ -14,8 +14,8 @@ const signup = async (req, res) => {
             sex,
             institution,
             image,
-            program_id,
-            study_id } = req.body
+            programs,
+            lvlstudy } = req.body
         const passwordHashed = bcryptjs.hashSync(password)
 
         const user = await userModel.create({
@@ -26,8 +26,8 @@ const signup = async (req, res) => {
             sex,
             institution,
             image,
-            program_id,
-            study_id
+            programs,
+            lvlstudy
         })
 
         res.json({ message: "User was created!", id: user._id })

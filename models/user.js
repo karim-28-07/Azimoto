@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     }],
     lvlstudy: [{
         type: mongoose.Types.ObjectId,
-        ref: "Lvlstudy"
+        ref: "Study"
     }],
     created: { type: Date, default: Date.now }
 })
