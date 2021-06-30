@@ -1,0 +1,7 @@
+const config = {
+    secret: "monmotsecretUSER",
+    port: 8080,
+    mongoURL: "mongodb://localhost:27017/azimutoDB"
+}
+
+module.exports = config
