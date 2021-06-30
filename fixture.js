@@ -14,16 +14,15 @@ const addLevel = async () => {
     try {
         await levelModel.deleteMany({})
 
-
         await levelModel.insertMany([
             {
-                level1: "6éme",
-                level2: "5éme",
-                level3: "4éme",
-                level4: "3éme",
-                level5: "2éme",
-                level6: "1éme",
-                level7: "Terminale"
+                collegelevel1: "6éme",
+                collegelevel2: "5éme",
+                collegelevel3: "4éme",
+                collegelevel4: "3éme",
+                lyceelevel1: "1éme année",
+                lyceelevel2: "2éme année",
+                lyceelevel3: "Terminale"
             }
         ])
 

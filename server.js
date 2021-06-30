@@ -8,8 +8,6 @@ const authRoutes  = require("./routes/authRoutes")
 
 const usersRoutes  = require("./routes/userRoutes")
 
-const userRoutes  = require("./routes/userRoutes")
-
 const levelsRoutes  = require("./routes/levelStudyRoutes")
 
 const partenairesRoutes = require("./routes/partenaireRoutes")
@@ -17,8 +15,6 @@ const partenairesRoutes = require("./routes/partenaireRoutes")
 const programRoutes = require("./routes/programRoutes")
 
 const questionsRoutes = require("./routes/questionsRoutes")
-
-const partenairesRoutes = require("./routes/partenaireRoutes")
 
 const { port, mongoURL } = require('./utils/config')
 
