@@ -9,8 +9,14 @@ const userSchema = new mongoose.Schema({
     sex: String,
     institution: String,
     image: String,
-    program_id: String,
-    study_id: String,
+    programs: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Program"
+    }],
+    lvlstudy: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Lvlstudy"
+    }],
     created: { type: Date, default: Date.now }
 })
 
