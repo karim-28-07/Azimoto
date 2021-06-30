@@ -10,6 +10,10 @@ const usersRoutes  = require("./routes/userRoutes")
 
 const userRoutes  = require("./routes/userRoutes")
 
+const programRoutes = require("./routes/programRoutes")
+
+const partenairesRoutes = require("./routes/partenaireRoutes")
+
 const { port, mongoURL } = require('./utils/config')
 
 
@@ -34,6 +38,10 @@ app.use("/user", authRoutes)
 app.use("/users", usersRoutes)
 
 app.use("/user", userRoutes)
+
+app.use("/program", programRoutes)
+
+app.use("/partenaires", partenairesRoutes)
 
 app.listen(port, () => {
     console.log("Server is listening at port ", port);
