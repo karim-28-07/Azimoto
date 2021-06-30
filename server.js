@@ -11,8 +11,12 @@ const usersRoutes  = require("./routes/userRoutes")
 const userRoutes  = require("./routes/userRoutes")
 
 const levelsRoutes  = require("./routes/levelStudyRoutes")
+
 const partenairesRoutes = require("./routes/partenaireRoutes")
+
 const programRoutes = require("./routes/programRoutes")
+
+const questionsRoutes = require("./routes/questionsRoutes")
 
 const partenairesRoutes = require("./routes/partenaireRoutes")
 
@@ -39,13 +43,12 @@ app.use("/user", authRoutes)
 
 app.use("/users", usersRoutes)
 
-app.use("/user", userRoutes)
-
 app.use("/partenaires", partenairesRoutes)
 
 app.use("/program", programRoutes)
 
-app.use("/partenaires", partenairesRoutes)
+app.use("/questions", questionsRoutes)
+
 app.use("/levels", levelsRoutes)
 
 app.listen(port, () => {
