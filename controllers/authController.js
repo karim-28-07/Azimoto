@@ -5,10 +5,30 @@ const config = require("../utils/config")
 
 const signup = async (req, res) => {
     try {
-        const { email,  firstName, lastName, password } = req.body
+        // const { email,  firstName, lastName, password } = req.body
+        const { email,
+            password,
+            firstName,
+            lastName,
+            birthday,
+            sex,
+            institution,
+            image,
+            program_id,
+            study_id } = req.body
         const passwordHashed = bcryptjs.hashSync(password)
 
-        const user = await userModel.create({ email, password: passwordHashed, firstName, lastName })
+        const user = await userModel.create({
+            email, password: passwordHashed,
+            firstName,
+            lastName,
+            birthday,
+            sex,
+            institution,
+            image,
+            program_id,
+            study_id
+        })
 
         res.json({ message: "User was created!", id: user._id })
     } catch (error) {
