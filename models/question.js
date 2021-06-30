@@ -2,8 +2,8 @@ const mongoose = require("mongoose")
 
 const questionSchema = new mongoose.Schema({
     text: { type: String, required: true },
-    description: String,
     order: Number,
+    deleted : 0,
     user_id: String,
     created: { type: Date, default: Date.now }
 })

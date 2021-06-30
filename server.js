@@ -13,6 +13,9 @@ const userRoutes  = require("./routes/userRoutes")
 const levelsRoutes  = require("./routes/levelStudyRoutes")
 const partenairesRoutes = require("./routes/partenaireRoutes")
 const programRoutes = require("./routes/programRoutes")
+
+const partenairesRoutes = require("./routes/partenaireRoutes")
+
 const { port, mongoURL } = require('./utils/config')
 
 
@@ -42,6 +45,7 @@ app.use("/partenaires", partenairesRoutes)
 
 app.use("/program", programRoutes)
 
+app.use("/partenaires", partenairesRoutes)
 app.use("/levels", levelsRoutes)
 
 app.listen(port, () => {
