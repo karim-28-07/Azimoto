@@ -7,7 +7,7 @@ const {
 
 
 
-router.get("/", getUsers) //Pour recuperer les users
+router.get("/",  getUsers) //Pour recuperer les users
 
 router.get("/:id", getUserById) //Pour recuperer le User par ID
 

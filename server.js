@@ -10,7 +10,7 @@ const usersRoutes  = require("./routes/userRoutes")
 
 const levelsRoutes  = require("./routes/levelStudyRoutes")
 
-const partenairesRoutes = require("./routes/partenaireRoutes")
+const partenairesRoutes = require("./routes/partnersRoutes")
 
 const programRoutes = require("./routes/programRoutes")
 
