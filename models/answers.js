@@ -5,6 +5,7 @@ const answerSchema = new mongoose.Schema({
     question: String,
     user_id: String,
     question_id: String,
+    // type 
     created: { type: Date, default: Date.now }
 
 })
