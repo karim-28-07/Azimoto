@@ -1,10 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const {
-   
-} = require("../controllers/answerController")
+const { getAnswer, createAnswer } = require("../controllers/answersController");
 
- 
+// router.get('/', getAnswer)
+router.post('/answer', createAnswer)
 
 
 

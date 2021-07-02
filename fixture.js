@@ -10,6 +10,8 @@ mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
     }
 })
 
+// hay que cambiar toda la bdd para agregar el tipo(number o string) en "question"
+
 const addLevel = async () => {
 
     try {
