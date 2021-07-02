@@ -43,7 +43,7 @@ app.use("/user", authRoutes)
 
 app.use("/users", usersRoutes)
 
-app.use("/partenaires", partnersRoutes)
+app.use("/partners", partnersRoutes)
 
 app.use("/program", programRoutes)
 
