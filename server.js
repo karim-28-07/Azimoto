@@ -10,7 +10,7 @@ const usersRoutes  = require("./routes/userRoutes")
 
 const levelsRoutes  = require("./routes/levelStudyRoutes")
 
-const partenairesRoutes = require("./routes/partenaireRoutes")
+const partnersRoutes = require("./routes/partnersRoutes")
 
 const programRoutes = require("./routes/programRoutes")
 
@@ -42,7 +42,7 @@ app.use("/user", authRoutes)
 
 app.use("/users", usersRoutes)
 
-app.use("/partenaires", partenairesRoutes)
+app.use("/partenaires", partnersRoutes)
 
 app.use("/program", programRoutes)
 
