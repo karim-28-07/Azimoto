@@ -2,16 +2,16 @@ const express = require("express")
 const router = express.Router()
 const {
     getUsers,
-    getUserById
+    getUserById, getUser
 } = require("../controllers/userController")
 
 
 
-router.get("/", getUsers) //Pour recuperer les users
+router.get("/",  getUsers) //Pour recuperer les users
 
 router.get("/:id", getUserById) //Pour recuperer le User par ID
 
-// router.get("/name/:name", getUser) //Pour recuperer le User par Name
+router.get("/name/:name", getUser) //Pour recuperer le User par Name
 
 // router.post("/",addNewUser)  //Pour ajouter New User(SignIn)
 

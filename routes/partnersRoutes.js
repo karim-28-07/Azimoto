@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const { getPartenaires } = require("../controllers/partenairesController.js")
+const { getPartners } = require("../controllers/partnersController")
 
 
-router.get('/', getPartenaires  )
+router.get('/', getPartners  )
 
 
 

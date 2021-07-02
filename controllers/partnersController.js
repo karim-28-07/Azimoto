@@ -1,6 +1,6 @@
-const partenairesModel = require("../models/partenaires")
+const partnersModel = require("../models/partners")
 
-const getPartenaires = async (req, res) => {
+const getPartners = async (req, res) => {
     try {
         
         // const idprogram = req.params.id
@@ -18,6 +18,6 @@ const getPartenaires = async (req, res) => {
 
 module.exports = {
     
-    getPartenaires,
+    getPartners,
     
 }
