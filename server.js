@@ -18,6 +18,7 @@ const questionsRoutes = require("./routes/questionsRoutes")
 
 const teamRoutes = require("./routes/teamRoutes")
 
+
 const { port, mongoURL } = require('./utils/config')
 
 
@@ -51,7 +52,7 @@ app.use("/levels", levelsRoutes)
 
 app.use("/teams", teamRoutes)
 
-// app.use("/", teamRoutes)
+app.use("/", teamRoutes)
 
 // app.use("/", teamRoutes)
 

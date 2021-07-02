@@ -39,7 +39,8 @@ const getTeamById = async (req, res) => {
 const deleteTeam = async (req, res) => {
     try {
         const Idteam = req.params.id
-        const teamDelete = await teamModel.findByIdAndRemove (Idteam)
+        const teamDelete = await teamModel.deleteOne({ _id: Idteam })
+        console.log("deleteteam", teamDelete)
         res.json({ message: "User was deleted", teamDelete})
     } catch (error) {
         console.log("Error", error)
@@ -47,10 +48,12 @@ const deleteTeam = async (req, res) => {
     }
 }
 
+
 const updateTeam = async (req, res) => {
     try {
         const Idteam = req.params.id
-        const teamUpdate = await teamModel.findByIdAndUpdate (Idteam)
+        const teamUpdate = await teamModel.updateOne({ _id: Idteam })
+        console.log("teamupdate", teamUpdate)
         res.json({ message: "User was updated", teamUpdate})
     } catch (error) {
         console.log("Error", error)

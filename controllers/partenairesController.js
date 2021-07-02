@@ -1,4 +1,4 @@
-const partenairesModel = require("../models/partenaires")
+const partenairesModel = require("../models/partners")
 
 const getPartenaires = async (req, res) => {
     try {
