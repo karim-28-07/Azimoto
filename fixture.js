@@ -17,14 +17,26 @@ const addLevel = async () => {
 
         await levelModel.insertMany([
             {
-                collegelevel1: "6éme",
-                collegelevel2: "5éme",
-                collegelevel3: "4éme",
-                collegelevel4: "3éme",
-                lyceelevel1: "1éme année",
-                lyceelevel2: "2éme année",
-                lyceelevel3: "Terminale"
-            }
+                name: "6éme année Collége"
+            },
+            {
+                name: "5éme année Collége"
+            },
+            {
+                name: "4éme année Collége"
+            },
+            {
+                name: "3éme année Collége"
+            },
+            {
+                name: "1éme année Lycée"
+            },
+            {
+                name: "2éme année Lycée"
+            },
+            {
+                name: "3éme année Lycée"
+            },
         ])
 
         console.log("The collection levels was recreated with the base data");
@@ -34,22 +46,22 @@ const addLevel = async () => {
     }
 }
 
-// addLevel()
+addLevel()
 
 
-const showLevel = async () => {
-    try {
-        const study = await levelModel.find({}).populate("Study")
-        
-        // console.log("study", study);
-        // console.log("study 1st", study[1].levels);
-        
-    } catch (error) {
-        console.log(error)
-    }
-}
+// const showLevel = async () => {
+//     try {
+//         const study = await levelModel.find({}).populate("Study")
 
-showLevel()
+//         // console.log("study", study);
+//         // console.log("study 1st", study[1].levels);
+
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+// showLevel()
 
 
 const addquestion = async () => {
@@ -167,16 +179,16 @@ const addquestion = async () => {
 
 addquestion()
 
-const showQuestions = async () => {
-    try {
-        const questions = await questionModel.find({}).populate("Question")
-        
-        // console.log("study", study);
-        // console.log("study 1st", study[1].levels);
-        
-    } catch (error) {
-        console.log(error)
-    }
-}
+// const showQuestions = async () => {
+//     try {
+//         const questions = await questionModel.find({}).populate("Question")
 
-showQuestions()
+//         // console.log("study", study);
+//         // console.log("study 1st", study[1].levels);
+
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+// showQuestions()

@@ -3,15 +3,9 @@ const programModel = require('../models/program')
 
 const getprogram = async (req, res) => {
     try {
-        
-        // const idprogram = req.params.id
-        // const program = await programModel.findById(idprogram)
+        const users = await programModel.find()
 
-       
-            res.json( {
-                message : "Teste OK",
-                } )
-       
+        res.json(users)
     } catch (err) {
         console.log(err)
 
