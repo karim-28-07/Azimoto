@@ -19,20 +19,15 @@ const mongoose = require('mongoose')
         
  const createAnswer = async (req, res) => {
      try {
-
-         const {valueNumber, valueText, question, user} = req.body
-        //  const answerCreate = await answerModel.create({valueNumber, valueText, question, user})
         
-        console.log(req.body)
+         const {valueNumber, valueText, question, user} = req.body
+         const answerCreate = await answerModel.create({valueNumber, valueText, question, user})
 
          res.json({
             message : "New Answer",
-            // answerCreate 
+            answerCreate 
         })
 
-
-
-         
      } catch (err) {
         
             console.log(err)
