@@ -20,7 +20,7 @@ const mongoose = require('mongoose')
  const createAnswer = async (req, res) => {
      try {
          const answer = req.body
-         const answerCreate = await answerModel.create()
+         const answerCreate = await answerModel.create(answer)
          res.json({
             message : "New Answer",
             answerCreate})
