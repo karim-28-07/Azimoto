@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 const levelModel = require("./models/levelStudy");
 const partnersModel = require('./models/partners');
 const questionModel = require("./models/question")
+const userModel = require("./models/user")
+const programModel = require("./models/program")
+const bcryptjs = require("bcryptjs")
 
 mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
     if (err) {
@@ -11,7 +14,77 @@ mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
     }
 })
 
-// hay que cambiar toda la bdd para agregar el tipo(number o string) en "question"
+const addUser = async () => {
+
+    const password = "123Karim@"
+    const passwordHache = bcryptjs.hashSync(password)
+
+    try {
+
+        const levelStudy = await levelModel.findOne({name : "3éme année Collége"})
+        console.log(levelStudy)
+        const programAzimuto = await programModel.findOne({name : "Parcours Collège"})
+
+        await userModel.deleteMany({})
+
+        await userModel.insertMany([
+            {
+                email: "karim.konexio@gmail.com",
+                password: passwordHache,
+                firstName: "karim",
+                lastName: "Mezouar",
+                birthday: "1986-07-28",
+                sex: "Men",
+                institution: "Konexio",
+                image: "test",
+                lvlstudy : levelStudy._id,
+                programs : programAzimuto._id
+
+            }
+
+        ])
+        console.log("The collection levels was recreated with the base data");
+
+    } catch (err) {
+        console.error(err)
+    }
+   
+}
+
+addUser()
+
+const addProgram = async ()=> {
+
+    try {
+
+        await programModel.deleteMany({})
+
+        await programModel.insertMany([
+
+            {
+                name : "Parcours Collège"
+            },
+            {
+                name : "Atelier(s) Lycée"
+            },
+            {
+                name : "Parcours Tous Azimuts"
+            },
+            {
+                name : "Programme 1 cycle 1 projet"
+            },
+            {
+                name : "Autre"
+            },
+        
+            ])
+        
+    } catch (error) {
+        
+    }
+}
+
+addProgram()
 
 const addLevel = async () => {
 
@@ -49,7 +122,7 @@ const addLevel = async () => {
     }
 }
 
-addLevel()
+// addLevel()
 
 
 // const showLevel = async () => {
@@ -204,7 +277,7 @@ const addquestion = async () => {
     }
 }
 
-addquestion()
+// addquestion()
 
 // const showQuestions = async () => {
 //     try {
@@ -223,7 +296,7 @@ addquestion()
 const addPartners = async () => {
 
     try {
-        
+
         await partnersModel.deleteMany({})
 
 
@@ -231,7 +304,7 @@ const addPartners = async () => {
             {
                 name: "konexio",
                 description: "le meilleur partenaire",
-                image : "Test"
+                image: "Test"
             }
         ])
 
@@ -242,4 +315,4 @@ const addPartners = async () => {
 
 }
 
-addPartners()
+// addPartners()
