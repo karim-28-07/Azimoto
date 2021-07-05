@@ -1,11 +1,17 @@
 const mongoose = require("mongoose")
 
 const answerSchema = new mongoose.Schema({
-    text: { type: String, required: true },
-    question: String,
-    user_id: String,
-    question_id: String,
-    // type 
+    valueNumber: Number,
+    valueText: String,
+    question: {
+        type: mongoose.Types.ObjectId,
+        ref: "question"
+    },
+
+    user: {
+        type: mongoose.Types.ObjectId,
+        ref: "user",
+    },
     created: { type: Date, default: Date.now }
 
 })
