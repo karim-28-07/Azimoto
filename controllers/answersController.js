@@ -22,17 +22,12 @@ const mongoose = require('mongoose')
         
          const {valueNumber, valueText, question, user} = req.body
          const answerCreate = await answerModel.create({valueNumber, valueText, question, user})
-        
-        console.log(req.body)
 
          res.json({
             message : "New Answer",
             answerCreate 
         })
 
-
-
-         
      } catch (err) {
         
             console.log(err)
