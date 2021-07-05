@@ -1,16 +1,16 @@
 const userModel = require("../models/user")
 const adminModel = require("../models/user")
 const jwt = require("jsonwebtoken")
-const config = require("../config.js")
+const config = require("../utils/config")
 
 const verifyTokenUser = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1]
+        const token = req.headers.authorization.split(" ")[1] // récupérer le token de user
 
-        const result = jwt.verify(token, config.secret)
+        const result = jwt.verify(token, config.secret) // vérifier le token de user avec le mot secret 
 
         if (result.id) {
-            const user = await userModel.findById({ _id: result.id }).lean()
+            const user = await userModel.findById({ _id: result.id }).lean() // chercher le user avec id dans la BD
 
             req.user = user
             next()
@@ -29,7 +29,7 @@ const verifyTokenAdmin = async (req, res, next) => {
         if (result.id) {
             const user = await adminModel.findById({ _id: result.id }).lean()
 
-            req.admin = admin
+            req.user = user
             next()
         }
     } catch (error) {

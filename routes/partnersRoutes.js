@@ -1,10 +1,12 @@
 const express = require("express")
 const router = express.Router()
-const { getPartners } = require("../controllers/partnersController.js")
+const { getPartners, findPartnersById, updatePartner, deletePartner } = require("../controllers/partnersController.js")
 
 
-router.get('/', getPartners  )
-
+router.get('/', getPartners)
+router.get("/partner/:id", findPartnersById)
+router.delete('/partner/:id',deletePartner)
+router.patch('/:id/partnerupdate',updatePartner)
 
 
 router.all("*", (req, res) => {

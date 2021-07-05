@@ -52,6 +52,23 @@ const getUser = async (req, res) => {
     }
 }
 
+const addNewUser = async (req, res) => {
+    try {
+        const user = req.body
+
+        const newUser = await userModel.create(user)
+
+        res.json({
+            message: "Ok, user was created!",
+            newUser
+        })
+    } catch (err) {
+        console.log(err)
+
+        res.status(500).json({ errorMessage: "There was a problem :(" })
+    }
+}
+
 
 
 
@@ -59,4 +76,5 @@ module.exports = {
     getUsers,
     getUserById,
     getUser,
+    addNewUser
 }
