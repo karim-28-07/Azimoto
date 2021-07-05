@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const levelModel = require("./models/levelStudy")
+const levelModel = require("./models/levelStudy");
+const partnersModel = require('./models/partners');
 const questionModel = require("./models/question")
 
 mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
@@ -48,7 +49,7 @@ const addLevel = async () => {
     }
 }
 
-addLevel()
+// addLevel()
 
 
 // const showLevel = async () => {
@@ -179,7 +180,7 @@ const addquestion = async () => {
     }
 }
 
-addquestion()
+// addquestion()
 
 // const showQuestions = async () => {
 //     try {
@@ -194,3 +195,27 @@ addquestion()
 // }
 
 // showQuestions()
+
+const addPartners = async () => {
+
+    try {
+        
+        await partnersModel.deleteMany({})
+
+
+        await partnersModel.insertMany([
+            {
+                name: "konexio",
+                description: "le meilleur partenaire",
+                image : "Test"
+            }
+        ])
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+addPartners()

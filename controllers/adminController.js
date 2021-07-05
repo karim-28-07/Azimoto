@@ -6,13 +6,15 @@ const config = require("../utils/config")
 const signupAdmin = async (req, res) => {
     try {
         
-        const { email, password, image } = req.body
-        const passwordHashed = bcryptjs.hashSync(password)
+        const { email, password, image } = req.body  // récupérer les données 
+        const passwordHashed = bcryptjs.hashSync(password)  // haché le MDP avant de l'enregistrer dans la BD
 
-        const admin = await adminModel.create({email, password: passwordHashed,image})
+        const admin = await adminModel.create({email, password: passwordHashed,image}) // créer l'admin et l'enregistré dans la BD avec un MDP haché 
 
         res.json({ message: "Admin was created!", id: admin._id })
+
     } catch (error) {
+
         console.log("Error: ", error)
         res.status(500).json({ message: "There was an error while treating the request" })
     }
@@ -20,12 +22,13 @@ const signupAdmin = async (req, res) => {
 
 const loginAdmin = async (req, res) => {
     try {
-        const admin = req.admin
+        const admin = req.admin // récupérer les données de l'admin
 
-        const result = bcryptjs.compareSync(req.body.password, admin.password)
+        const result = bcryptjs.compareSync(req.body.password, admin.password) // comparer les deux MDP 
 
-        if (result) {
-            const token = jwt.sign(
+        if (result) {                      // si le resultat est true
+            
+            const token = jwt.sign(        // on creer un token pour l'admin
                 {
                     id: admin._id
                 }, config.secret,
