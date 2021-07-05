@@ -19,11 +19,19 @@ const mongoose = require('mongoose')
         
  const createAnswer = async (req, res) => {
      try {
-         const answer = req.body
-         const answerCreate = await answerModel.create()
+
+         const {valueNumber, valueText, question, user} = req.body
+        //  const answerCreate = await answerModel.create({valueNumber, valueText, question, user})
+        
+        console.log(req.body)
+
          res.json({
             message : "New Answer",
-            answerCreate})
+            // answerCreate 
+        })
+
+
+
          
      } catch (err) {
         
@@ -33,3 +41,5 @@ const mongoose = require('mongoose')
     }
          
 module.exports = { createAnswer }
+
+// 

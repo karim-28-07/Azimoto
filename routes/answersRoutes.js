@@ -3,7 +3,8 @@ const router = express.Router()
 const { getAnswer, createAnswer } = require("../controllers/answersController");
 
 // router.get('/', getAnswer)
-router.post('/answer', createAnswer)
+router.post('/', createAnswer)
+
 
 
 
