@@ -4,6 +4,7 @@ const partnersModel = require('./models/partners');
 const questionModel = require("./models/question")
 const userModel = require("./models/user")
 const programModel = require("./models/program")
+const adminModel = require("./models/admin")
 const bcryptjs = require("bcryptjs")
 
 mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
@@ -51,7 +52,7 @@ const addUser = async () => {
    
 }
 
-addUser()
+// addUser()
 
 const addProgram = async ()=> {
 
@@ -84,7 +85,7 @@ const addProgram = async ()=> {
     }
 }
 
-addProgram()
+// addProgram()
 
 const addLevel = async () => {
 
@@ -316,3 +317,33 @@ const addPartners = async () => {
 }
 
 // addPartners()
+
+const addAdmin = async () => {
+
+    const passwordAdmin = "1234Admin?"
+    const passwordHacheAdmin = bcryptjs.hashSync(passwordAdmin)
+
+
+    try {
+
+        await adminModel.deleteMany({})
+
+
+        await adminModel.insertMany([
+
+            {
+                email : "admin@gmail.com",
+                password : passwordHacheAdmin,
+                image : "Test"
+
+            }
+
+        ])
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+addAdmin()
