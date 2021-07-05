@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 const levelModel = require("./models/levelStudy");
 const partnersModel = require('./models/partners');
 const questionModel = require("./models/question")
+const userModel = require("./models/user")
+const programModel = require("./models/program")
+const bcryptjs = require("bcryptjs")
 
 mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
     if (err) {
@@ -11,7 +14,77 @@ mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
     }
 })
 
-// hay que cambiar toda la bdd para agregar el tipo(number o string) en "question"
+const addUser = async () => {
+
+    const password = "123Karim@"
+    const passwordHache = bcryptjs.hashSync(password)
+
+    try {
+
+        const levelStudy = await levelModel.findOne({name : "3éme année Collége"})
+        console.log(levelStudy)
+        const programAzimuto = await programModel.findOne({name : "Parcours Collège"})
+
+        await userModel.deleteMany({})
+
+        await userModel.insertMany([
+            {
+                email: "karim.konexio@gmail.com",
+                password: passwordHache,
+                firstName: "karim",
+                lastName: "Mezouar",
+                birthday: "1986-07-28",
+                sex: "Men",
+                institution: "Konexio",
+                image: "test",
+                lvlstudy : levelStudy._id,
+                programs : programAzimuto._id
+
+            }
+
+        ])
+        console.log("The collection levels was recreated with the base data");
+
+    } catch (err) {
+        console.error(err)
+    }
+   
+}
+
+addUser()
+
+const addProgram = async ()=> {
+
+    try {
+
+        await programModel.deleteMany({})
+
+        await programModel.insertMany([
+
+            {
+                name : "Parcours Collège"
+            },
+            {
+                name : "Atelier(s) Lycée"
+            },
+            {
+                name : "Parcours Tous Azimuts"
+            },
+            {
+                name : "Programme 1 cycle 1 projet"
+            },
+            {
+                name : "Autre"
+            },
+        
+            ])
+        
+    } catch (error) {
+        
+    }
+}
+
+addProgram()
 
 const addLevel = async () => {
 
@@ -75,100 +148,124 @@ const addquestion = async () => {
 
         await questionModel.insertMany([
             {
-                text: " Je connais bien mes qualités :",
+                description: " Je connais bien mes qualités :",
+                type: "multiple",
                 order: 1
             },
 
             {
-                text: "Je peux facilement parler de mes qualités :",
+                description: "Je peux facilement parler de mes qualités :",
+                type: "multiple",
                 order: 2
             },
             {
-                text: "Je sais quelles sont mes valeurs :",
+                description: "Je sais quelles sont mes valeurs :",
+                type: "multiple",
                 order: 3
             },
             {
-                text: "Je sais quelles sont mes centres d’intérêts :",
+                description: "Je sais quelles sont mes centres d’intérêts :",
+                type: "multiple",
                 order: 4
             },
             {
-                text: "Je sais quelles conditions de travail je souhaite pour plus tard :",
+                description: "Je sais quelles conditions de travail je souhaite pour plus tard :",
+                type: "multiple",
                 order: 5
             },
             {
-                text: "Je sais quel(s) domaine(s) professionnel(s) me correspond(ent) pour plus tard :",
+                description: "Je sais quel(s) domaine(s) professionnel(s) me correspond(ent) pour plus tard :",
+                type: "multiple",
                 order: 6
             },
             {
-                text: "Je me sens à l’aise pour travailler en équipe :",
+                description: "Je me sens à l’aise pour travailler en équipe :",
+                type: "multiple",
                 order: 7
             },
             {
-                text: "Je me sens à l’aise pour prendre la parole en public :",
+                description: "Je me sens à l’aise pour prendre la parole en public :",
+                type: "multiple",
                 order: 8
             },
             {
-                text: "Je sais quelle place j’aime prendre dans un groupe :",
+                description: "Je sais quelle place j’aime prendre dans un groupe :",
+                type: "multiple",
                 order: 9
             },
             {
-                text: "Je sais facilement si je peux faire confiance aux autres :",
+                description: "Je sais facilement si je peux faire confiance aux autres :",
+                type: "multiple",
                 order: 10
             },
             {
-                text: "Il est facile pour moi de recevoir des compliments :",
+                description: "Il est facile pour moi de recevoir des compliments :",
+                type: "multiple",
                 order: 11
             },
             {
-                text: " Il est facile pour moi de faire des compliments aux autres :",
+                description: " Il est facile pour moi de faire des compliments aux autres :",
+                type: "multiple",
                 order: 12
             },
             {
-                text: "J’ai confiance en moi :",
+                description: "J’ai confiance en moi :",
+                type: "multiple",
                 order: 13
             },
             {
-                text: "J’ai identifié mon projet d’avenir :",
+                description: "J’ai identifié mon projet d’avenir :",
+                type: "multiple",
                 order: 14
             },
             {
-                text: "J’ai confiance en mes capacités pour réaliser mon projet d’avenir",
+                description: "J’ai confiance en mes capacités pour réaliser mon projet d’avenir",
+                type: "multiple",
                 order: 15
             },
             {
-                text: "Je pense arriver facilement à me fixer des objectifs que je peux tenir :",
+                description: "Je pense arriver facilement à me fixer des objectifs que je peux tenir :",
+                type: "multiple",
                 order: 16
             },
             {
-                text: "Je me sens mobililsé.e et motivé.e dans mon parcours scolaire et professionnel :",
+                description: "Je me sens mobililsé.e et motivé.e dans mon parcours scolaire et professionnel :",
+                type: "multiple",
                 order: 17
             },
             {
-                text: "Je me sens acteur.trice de mon parcours ? (C’est à dire,  que j’ai l’impression que c’est moi qui décide)",
+                description: "Je me sens acteur.trice de mon parcours ? (C’est à dire,  que j’ai l’impression que c’est moi qui décide)",
+                type: "multiple",
                 order: 18
             },
             {
-                text: "Je sais ce qu’est l'Économie Sociale et Solidaire :",
+                description: "Je sais ce qu’est l'Économie Sociale et Solidaire :",
+                type: "multiple",
                 order: 19
             },
             {
-                text: "Je suis à l'écoute de mes émotions et de mon intuition :",
+                description: "Je suis à l'écoute de mes émotions et de mon intuition :",
+                type: "texte",
                 order: 20
             },
             {
-                text: "Je sais faire le tri dans l'information et penser par soi-même :",
+                description: "Je sais faire le tri dans l'information et penser par soi-même :",
+                type: "texte",
                 order: 21
             },
             {
-                text: "Je sais imaginer, innover et toujours chercher de nouvelles possibilités :",
+                description: "Je sais imaginer, innover et toujours chercher de nouvelles possibilités :",
+                type: "texte",
                 order: 22
             },
             {
-                text: "Je sais travailler en équipe et apprendre les uns des autre :",
+                description: "Je sais travailler en équipe et apprendre les uns des autre :",
+                type: "texte",
                 order: 23
             },
             {
-                text: "Je sais porter mes idées, être transparent.e et développer des relations de qualité :",
+                description: "Je sais porter mes idées, être transparent.e et développer des relations de qualité :",
+                type: "texte",
                 order: 24
             },
         ])
@@ -199,7 +296,7 @@ const addquestion = async () => {
 const addPartners = async () => {
 
     try {
-        
+
         await partnersModel.deleteMany({})
 
 
@@ -207,7 +304,7 @@ const addPartners = async () => {
             {
                 name: "konexio",
                 description: "le meilleur partenaire",
-                image : "Test"
+                image: "Test"
             }
         ])
 
@@ -218,4 +315,4 @@ const addPartners = async () => {
 
 }
 
-addPartners()
+// addPartners()

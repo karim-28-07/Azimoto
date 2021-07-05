@@ -1,10 +1,11 @@
 const express = require("express")
 const router = express.Router()
-const { getQuestion, findQuestionById, deleteQuestion, updateQuestion } = require("../controllers/questionsController")
+const { createQuestion ,getQuestion, findQuestionById, deleteQuestion, updateQuestion } = require("../controllers/questionsController")
 
 router.get("/", getQuestion )
+router.post("/", createQuestion)
 router.get("/question/:id", findQuestionById )
-router.delete('/question/:id', deleteQuestion )
+router.delete('/:id', deleteQuestion )
 router.patch('/:id/questionupdate', updateQuestion)
 
 
