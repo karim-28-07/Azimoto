@@ -15,6 +15,8 @@ import ConnexionPage from './views/Connexion';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import QuestionPage from './views/Formulaire';
+import ConnexionAdminPage from './views/ConnexionAdmin';
+import SignupAdmin from './views/SignupAdmin';
 
 function App() {
 
@@ -60,7 +62,9 @@ function App() {
           <Route path="/participer" exact component={Participer} />
           <Route path="/contact" exact component={ContactPage} />
           <Route path="/connexion" exact component={ConnexionPage} />
+          <Route path="/professionnels" exact component={ConnexionAdminPage} />
           <Route path="/connexion/signup" exact component={Signup} />
+          <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
           <Route path="/connexion/login" exact component={Login} />
           <Route path="/logged/formulaire" exact component={QuestionPage} />
           {/* <Route path="/signup" component={} />
