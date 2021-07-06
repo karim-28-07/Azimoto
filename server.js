@@ -46,7 +46,7 @@ app.use("/user", authRoutes)
 
 app.use("/users", usersRoutes)
 
-app.use("/partners", partnersRoutes)
+app.use("/", partnersRoutes)
 
 app.use("/program", programRoutes)
 
