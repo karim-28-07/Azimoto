@@ -18,6 +18,25 @@ const getPartners = async (req, res) => {
     }
 }
 
+
+const addNewPartner = async (req, res) => {
+    try {
+        const partners = req.body
+
+        const newPartner = await partnersModel.create(partners) 
+        res.json({
+            message: "Teste OK",
+            newPartner
+        })
+
+    } catch (err) {
+        console.log(err)
+
+        res.status(500).json({ errorMessage: "There was a problem :(" })
+    }
+}
+
+
 const findPartnersById = async (req, res) => {
     try {
 
@@ -74,6 +93,7 @@ const updatePartner = async (req, res) => {
 module.exports = {
 
     getPartners,
+    addNewPartner,
     findPartnersById,
     updatePartner,
     deletePartner

@@ -85,7 +85,7 @@ const addProgram = async ()=> {
     }
 }
 
-// addProgram()
+addProgram()
 
 const addLevel = async () => {
 
