@@ -3,7 +3,7 @@ const router = express.Router()
 const { addnewTeam, getTeamById, deleteTeam, updateTeam } = require("../controllers/teamController")
 
  
-router.post('/newteam', addnewTeam)
+router.post('/', addnewTeam)
 router.get("/:id", getTeamById)
 router.delete('/:id/deleteteam', deleteTeam)
 router.patch('/:id/updateteam', updateTeam)
@@ -15,3 +15,4 @@ router.all("*", (req, res) => {
 })
 
 module.exports = router
+    

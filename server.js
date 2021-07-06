@@ -46,7 +46,11 @@ app.use("/user", authRoutes)
 
 app.use("/users", usersRoutes)
 
+<<<<<<< HEAD
 app.use("/", partnersRoutes)
+=======
+app.use("/partner", partnersRoutes)
+>>>>>>> ft-teste-route
 
 app.use("/program", programRoutes)
 
