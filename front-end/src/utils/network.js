@@ -1,6 +1,6 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-// const API_URL = "http://localhost:8000/api"
+const API_URL = "http://localhost:8080/"
 
 // export const getHeroes = async () => {
 //     try {
@@ -24,16 +24,16 @@
 //     }
 // }
 
-// export const postSignup = async (body) => {
-//     try {
-//         const response = await axios.post(`${API_URL}/auth/signup`, body)
+export const postSignup = async (body) => {
+    try {
+        const response = await axios.post(`${API_URL}user/signup`, body)
 
-//         return response.data
-//     } catch (error) {
-//         console.error(error)
-//         return false
-//     }
-// }
+        return response.data
+    } catch (error) {
+        console.error(error)
+        return false
+    }
+}
 
 // export const postLogin = async (body) => {
 //     try {
