@@ -1,11 +1,11 @@
 import React from "react";
 import {  MDBRow, MDBCol, MDBCardBody, MDBBtn, MDBView, MDBMask, Link } from "mdbreact";
 
-const ConnexionPage = () => {
+const ConnexionAdminPage = () => {
   return (
     <section className="text-center my-5">
         <h2 className="h1-responsive font-weight-bold my-5">
-          Espace Jeune
+          Espace Professionnels
         </h2>
 
         <MDBRow className="d-flex justify-content-center">
@@ -48,7 +48,7 @@ const ConnexionPage = () => {
               <h4 className="font-weight-bold mb-3">C'est la première fois que tu viens ? Clique ici</h4>
               
               <MDBBtn color="cyan" rounded>
-              <Link to="/connexion/signup" className="text-white nav-link active ">Créer mon compte</Link>
+              <Link to="/connexion/signup-admin" className="text-white nav-link active ">Créer mon compte</Link>
 
               </MDBBtn>
             </MDBCardBody>
@@ -58,4 +58,4 @@ const ConnexionPage = () => {
   );
 }
 
-export default ConnexionPage;
+export default ConnexionAdminPage;

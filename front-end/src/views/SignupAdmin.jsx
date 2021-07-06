@@ -19,7 +19,7 @@ import { postSignup } from '../utils/network';
 
 // class Signup extends Component {
 
-const Signup = () => {
+const SignupAdmin = () => {
 
   let history = useHistory()
 
@@ -148,39 +148,7 @@ const Signup = () => {
             <MDBCard className="offset-3 col-6">
               <MDBCardBody>
                 <form>
-                  <p className="h4 text-center py-4">S'inscrire</p>
-                  <div className="grey-text">
-                    <MDBInput
-                      label="Ton prénom"
-                      icon="user"
-                      group
-                      type="text"
-                      validate
-                      error="wrong"
-                      success="right"
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                    <MDBInput
-                      label="Ton nom"
-                      icon="user"
-                      group
-                      type="text"
-                      validate
-                      error="wrong"
-                      success="right"
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                    <MDBInput
-                      label="Ton âge"
-                      icon="calendar-alt"
-                      group
-                      type="text"
-                      validate
-                      error="wrong"
-                      success="right"
-                      onChange={(e) => setBirthday(e.target.value)}
-
-                    />
+                  
                     <MDBInput
                       label="Your email"
                       icon="envelope"
@@ -193,64 +161,7 @@ const Signup = () => {
                     />
 
 
-                    <MDBIcon style={{ fontSize: "1.8rem" }} icon="user" className="mr-3" />
-                    <label icon="user" htmlFor="exampleDisabled" className="disabled">Tu es un(e)</label>
-
-
-
-
-
-                    <MDBFormInline className="my-5">
-
-                      <MDBInput
-                        onClick={() => setRadio('Une fille')}
-                        checked={radio === 'Une fille' ? true : false}
-                        label='Une fille'
-                        type='radio'
-                        id='radio1'
-                        containerClass='offset-1 mr-5'
-                        style={{
-                          width: "20px",
-                          height: "20px"
-                        }}
-                      />
-                      <MDBInput
-                        onClick={() => setRadio('Un garçon')}
-                        checked={radio === 'Un garçon' ? true : false}
-                        label='Un garçon'
-                        type='radio'
-                        id='radio1'
-                        containerClass='mr-5'
-                        style={{
-                          width: "20px",
-                          height: "20px"
-                        }}
-                      />
-                      <MDBInput
-                        onClick={() => setRadio('Autre')}
-                        checked={radio === 'Autre' ? true : false}
-                        label='Autre'
-                        type='radio'
-                        id='radio1'
-                        containerClass='mr-5'
-                        style={{
-                          width: "20px",
-                          height: "20px"
-                        }}
-                      />
-
-                    </MDBFormInline>
-
-                    <div>
-                      <select className="browser-default custom-select">
-                        <option>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                      </select>
-                    </div>
-
-
+                  
 
                     <MDBInput
                       label="Your password"
@@ -270,7 +181,7 @@ const Signup = () => {
                       success="right"
                       onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                  </div>
+                  
 
 
                   <div className="text-center py-4 mt-3">
@@ -292,4 +203,4 @@ const Signup = () => {
   }
 }
 
-export default Signup;
+export default SignupAdmin;
