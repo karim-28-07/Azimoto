@@ -5,8 +5,8 @@ const { validationSignup, validationLogin} = require ("../middlewares/validation
 const { verifyTokenAdmin, onlyAdmin} = require("../middlewares/authMiddlewares")
 
 
-router.post("/signupAdmin",validationSignup, signupAdmin)
+router.post("/signupadmin",validationSignup, signupAdmin)
 
-router.post("/loginAdmin", validationLogin, loginAdmin)
+router.post("/loginadmin", validationLogin, loginAdmin)
 
 module.exports = router
