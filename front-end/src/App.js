@@ -1,7 +1,20 @@
 import React from 'react'
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
+import'bootstrap-css-only/css/bootstrap.min.css'; 
+import'mdbreact/dist/css/mdb.css';
+
 import Home from './views/Home';
+import Footer from './components/Footer';
+import Qui from './views/Qui';
+import Programmes from './views/Programmes';
+import Participer from './views/Participer';
+import ContactPage from './views/Contact';
+import ConnexionPage from './views/Connexion';
+import Signup from './views/Signup';
+import Login from './views/Login';
+import QuestionPage from './views/Formulaire';
 
 function App() {
 
@@ -22,7 +35,10 @@ function App() {
                   <Link to="/Qui" className="nav-link active">Qui</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/Nos-Programmes" className="nav-link active">Nos Programmes</Link>
+                  <Link to="/nos-programmes" className="nav-link active">Nos Programmes</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/participer" className="nav-link active">Participer</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/Contact" className="nav-link active">Contact</Link>
@@ -39,6 +55,14 @@ function App() {
 
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/qui" exact component={Qui} />
+          <Route path="/nos-programmes" exact component={Programmes} />
+          <Route path="/participer" exact component={Participer} />
+          <Route path="/contact" exact component={ContactPage} />
+          <Route path="/connexion" exact component={ConnexionPage} />
+          <Route path="/connexion/signup" exact component={Signup} />
+          <Route path="/connexion/login" exact component={Login} />
+          <Route path="/logged/formulaire" exact component={QuestionPage} />
           {/* <Route path="/signup" component={} />
           <Route path="/login">
             <Login changeUserConnected={} />
@@ -48,7 +72,9 @@ function App() {
           </Route> */}
         </Switch>
       </div>
+      <Footer/>
     </BrowserRouter>
+    
   );
 }
 
