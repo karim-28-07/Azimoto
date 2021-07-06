@@ -5,7 +5,7 @@ const ConnexionPage = () => {
   return (
     <section className="text-center my-5">
         <h2 className="h1-responsive font-weight-bold my-5">
-          Azimuto
+          Espace Jeune
         </h2>
 
         <MDBRow className="d-flex justify-content-center">

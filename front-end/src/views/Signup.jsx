@@ -25,9 +25,9 @@ const Signup = () => {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
+  const [sex, setSex] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -75,8 +75,8 @@ const Signup = () => {
       errors.push("Please enter Last Name")
     }
 
-    // if (gender === "") {
-    //   errors.push("Please enter your Gender")
+    // if (sex === "") {
+    //   errors.push("Please enter your Sex")
     // }
 
     return errors
@@ -97,13 +97,13 @@ const Signup = () => {
 
 
 
-  // console.log("firstName:", firstName)
-  // console.log("lastName:", lastName)
-  // console.log("age:",age)
-  // console.log("email:" ,email)
-  // console.log("password:", password)
-  // console.log("confirmPassword:", confirmPassword)
-  // console.log("Gender:", radio)
+  console.log("firstName:", firstName)
+  console.log("lastName:", lastName)
+  console.log("age:",birthday)
+  console.log("email:" ,email)
+  console.log("password:", password)
+  console.log("confirmPassword:", confirmPassword)
+  console.log("Sex:", radio)
 
 
 
@@ -116,9 +116,9 @@ const Signup = () => {
         const result = await postSignup({
           firstName,
           lastName,
-          age,
+          birthday,
           email,
-          gender,
+          sex,
           password,
           confirmPassword,
         })
@@ -178,7 +178,7 @@ const Signup = () => {
                       validate
                       error="wrong"
                       success="right"
-                      onChange={(e) => setAge(e.target.value)}
+                      onChange={(e) => setBirthday(e.target.value)}
 
                     />
                     <MDBInput
