@@ -14,6 +14,7 @@ import {
 
 import { useHistory } from 'react-router-dom'
 import { postSignup } from '../utils/network';
+import axios from "axios";
 
 
 
@@ -30,8 +31,9 @@ const Signup = () => {
   const [sex, setSex] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-
+  
+  const [level, setLevel] = useState([]);
+  const [parcour, setParcour] = useState([]);
 
   const [formErrors, setFormErrors] = useState([]);
 
@@ -47,7 +49,7 @@ const Signup = () => {
 
   const validateForm = () => {
     const errors = []
-    console.log("errors",errors)
+    console.log("errors", errors)
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!regexEmail.test(email.toLowerCase())) {
       errors.push("Email is not valid")
@@ -81,7 +83,7 @@ const Signup = () => {
 
     return errors
   }
-  
+
 
   const [radio, setRadio] = useState("");
 
@@ -96,15 +98,51 @@ const Signup = () => {
   // };
 
 
+  
+  const program = async (body) => {
+    try {
+      const response = await axios.get("http://localhost:8080/program", body)
 
-  console.log("firstName:", firstName)
-  console.log("lastName:", lastName)
-  console.log("age:",birthday)
-  console.log("email:" ,email)
-  console.log("password:", password)
-  console.log("confirmPassword:", confirmPassword)
-  console.log("Sex:", radio)
+      const programMap = response.data.map((elem) => {
+        return elem.name
+      });
 
+      setParcour(programMap)
+      return programMap
+
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+ 
+
+
+  const studies = async (body) => {
+    try {
+      const response = await axios.get("http://localhost:8080/levels", body)
+
+      const lvlMap = response.data.map((elem) => {
+        return elem.name
+      });
+
+      setLevel(lvlMap) 
+
+      return lvlMap
+
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+
+
+useEffect(() => {
+  studies()
+  program()
+
+},[])
 
 
 
@@ -122,7 +160,7 @@ const Signup = () => {
           password,
           confirmPassword,
         })
-        
+
         if (result) {
           setUserCreated(true)
         } else {
@@ -241,16 +279,31 @@ const Signup = () => {
 
                     </MDBFormInline>
 
-                    <div>
+                    <div className="my-5">
                       <select className="browser-default custom-select">
-                        <option>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option>Choisis ton niveau scolaire</option>
+                        <option value="1">{level[0]}</option>
+                        <option value="2">{level[1]}</option>
+                        <option value="3">{level[2]}</option>
+                        <option value="4">{level[3]}</option>
+                        <option value="5">{level[4]}</option>
+                        <option value="5">{level[5]}</option>
+                        <option value="5">{level[6]}</option>
                       </select>
+
                     </div>
 
+                    <div className="my-5">
+                      <select className="browser-default custom-select">
+                        <option>Choisis ton parcour</option>
+                        <option value="1">{parcour[0]}</option>
+                        <option value="2">{parcour[1]}</option>
+                        <option value="3">{parcour[2]}</option>
+                        <option value="4">{parcour[3]}</option>
+                        <option value="5">{parcour[4]}</option>
+                      </select>
 
+                    </div>
 
                     <MDBInput
                       label="Your password"
@@ -276,7 +329,7 @@ const Signup = () => {
                   <div className="text-center py-4 mt-3">
                     <MDBBtn onClick={signup} color="cyan" type="submit">
 
-                      <Link to="/logged/formulaire" className="text-white nav-link active ">Enregistrer</Link>
+                      <Link to="/connexion" className="text-white nav-link active ">Enregistrer</Link>
 
                     </MDBBtn>
                   </div>
