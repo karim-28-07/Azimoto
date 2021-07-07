@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  MDBIcon,
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -9,7 +8,6 @@ import {
   MDBCard,
   MDBCardBody,
   Link,
-  MDBFormInline,
 } from 'mdbreact';
 
 import { useHistory } from 'react-router-dom'
@@ -23,11 +21,8 @@ const SignupAdmin = () => {
 
   let history = useHistory()
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [birthday, setBirthday] = useState("");
+ 
   const [email, setEmail] = useState("");
-  const [sex, setSex] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -58,54 +53,14 @@ const SignupAdmin = () => {
       errors.push("Passwords are not the same")
     }
 
-    // const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{4,}$/
-    // if (!regexPassword.test(password)) {
-    //   errors.push("Passwords must have at least 4 characters, 1 number, 1 upper and 1 lowercase")
-    // }
-
-    // if (!(age < "13" || age > "25")) {
-    //   errors.push("Please enter your Age")
-    // }
-
-    if (firstName === "") {
-      errors.push("Please enter First Name")
-    }
-
-    if (lastName === "") {
-      errors.push("Please enter Last Name")
-    }
-
-    // if (sex === "") {
-    //   errors.push("Please enter your Sex")
-    // }
-
     return errors
   }
   
 
-  const [radio, setRadio] = useState("");
 
-  // state = {
-  //   radio: 0
-  // };
-
-  // onClick = nr => () => {
-  //   this.setState({
-  //     radio: nr
-  //   });
-  // };
-
-
-
-  console.log("firstName:", firstName)
-  console.log("lastName:", lastName)
-  console.log("age:",birthday)
   console.log("email:" ,email)
   console.log("password:", password)
   console.log("confirmPassword:", confirmPassword)
-  console.log("Sex:", radio)
-
-
 
 
   const signup = async () => {
@@ -114,11 +69,8 @@ const SignupAdmin = () => {
 
       if (validationErrors.length === 0) {
         const result = await postSignup({
-          firstName,
-          lastName,
-          birthday,
+        
           email,
-          sex,
           password,
           confirmPassword,
         })
@@ -148,6 +100,7 @@ const SignupAdmin = () => {
             <MDBCard className="offset-3 col-6">
               <MDBCardBody>
                 <form>
+                <p className="h4 text-center py-4">S'inscrire</p>
                   
                     <MDBInput
                       label="Your email"
@@ -159,9 +112,6 @@ const SignupAdmin = () => {
                       success="right"
                       onChange={(e) => setEmail(e.target.value)}
                     />
-
-
-                  
 
                     <MDBInput
                       label="Your password"
@@ -182,8 +132,6 @@ const SignupAdmin = () => {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                   
-
-
                   <div className="text-center py-4 mt-3">
                     <MDBBtn onClick={signup} color="cyan" type="submit">
 

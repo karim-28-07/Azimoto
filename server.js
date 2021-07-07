@@ -46,11 +46,6 @@ app.use("/user", authRoutes)
 
 app.use("/users", usersRoutes)
 
-<<<<<<< HEAD
-app.use("/", partnersRoutes)
-=======
-app.use("/partner", partnersRoutes)
->>>>>>> ft-teste-route
 
 app.use("/program", programRoutes)
 
@@ -70,6 +65,7 @@ app.use("/answers", answersRoutes)
 
 // app.use("/", teamRoutes)
 
+app.use("/", partnersRoutes)
 
 
 app.listen(port, () => {
