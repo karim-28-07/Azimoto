@@ -31,9 +31,11 @@ const Signup = () => {
   const [sex, setSex] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  
-  const [level, setLevel] = useState([]);
+
+  const [levels, setLevel] = useState([]);
   const [parcour, setParcour] = useState([]);
+  const [levelsSelect, setLevelSelect] = useState("")
+  const [parcourSelect, setParcourSelect] = useState("");
 
   const [formErrors, setFormErrors] = useState([]);
 
@@ -98,37 +100,27 @@ const Signup = () => {
   // };
 
 
-  
+
   const program = async (body) => {
     try {
       const response = await axios.get("http://localhost:8080/program", body)
 
-      const programMap = response.data.map((elem) => {
-        return elem.name
-      });
 
-      setParcour(programMap)
-      return programMap
+      setParcour(response.data)
 
     } catch (err) {
       console.log(err)
     }
 
   }
- 
 
 
   const studies = async (body) => {
     try {
       const response = await axios.get("http://localhost:8080/levels", body)
 
-      const lvlMap = response.data.map((elem) => {
-        return elem.name
-      });
 
-      setLevel(lvlMap) 
-
-      return lvlMap
+      setLevel(response.data)
 
     } catch (err) {
       console.log(err)
@@ -136,13 +128,11 @@ const Signup = () => {
 
   }
 
+  useEffect(() => {
+    studies()
+    program()
 
-
-useEffect(() => {
-  studies()
-  program()
-
-},[])
+  }, [])
 
 
   const signup = async () => {
@@ -150,15 +140,19 @@ useEffect(() => {
       const validationErrors = validateForm()
 
       if (validationErrors.length === 0) {
+
         const result = await postSignup({
           firstName,
           lastName,
           birthday,
           email,
           sex,
+          lvlstudy : levelsSelect,
+          programs: parcourSelect,
           password,
           confirmPassword,
         })
+
 
         if (result) {
           setUserCreated(true)
@@ -250,7 +244,10 @@ useEffect(() => {
                           width: "20px",
                           height: "20px"
                         }}
+                        onChange={(e) => setSex("Women")}
                       />
+
+
                       <MDBInput
                         onClick={() => setRadio('Un garçon')}
                         checked={radio === 'Un garçon' ? true : false}
@@ -262,6 +259,7 @@ useEffect(() => {
                           width: "20px",
                           height: "20px"
                         }}
+                        onChange={(e) => setSex("Men")}
                       />
                       <MDBInput
                         onClick={() => setRadio('Autre')}
@@ -274,32 +272,41 @@ useEffect(() => {
                           width: "20px",
                           height: "20px"
                         }}
+                        onChange={(e) => setSex("Autre")}
                       />
 
                     </MDBFormInline>
 
                     <div className="my-5">
-                      <select className="browser-default custom-select">
+                      <select className="browser-default custom-select" onChange={(e) => setLevelSelect(e.target.value)}>
                         <option>Choisis ton niveau scolaire</option>
-                        <option value="1">{level[0]}</option>
-                        <option value="2">{level[1]}</option>
-                        <option value="3">{level[2]}</option>
-                        <option value="4">{level[3]}</option>
-                        <option value="5">{level[4]}</option>
-                        <option value="5">{level[5]}</option>
-                        <option value="5">{level[6]}</option>
-                      </select>
 
+                        {
+                          levels.map(elem => {
+                            return (
+                              <option value={elem._id}>{elem.name}</option>
+                            )
+                          })
+                        }
+
+                      </select>
                     </div>
 
+
+
+
                     <div className="my-5">
-                      <select className="browser-default custom-select">
+                      <select className="browser-default custom-select" onChange={(e) => setParcourSelect(e.target.value)}>
                         <option>Choisis ton parcour</option>
-                        <option value="1">{parcour[0]}</option>
-                        <option value="2">{parcour[1]}</option>
-                        <option value="3">{parcour[2]}</option>
-                        <option value="4">{parcour[3]}</option>
-                        <option value="5">{parcour[4]}</option>
+                        {
+                          parcour.map(elem => {
+                            return (
+                              <option value={elem._id}>{elem.name}</option>
+
+
+                            )
+                          })
+                        }
                       </select>
 
                     </div>
@@ -326,9 +333,11 @@ useEffect(() => {
 
 
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn onClick={signup} color="cyan" type="submit">
+                    <MDBBtn onClick={signup} color="cyan">
 
-                      <Link to="/connexion" className="text-white nav-link active ">Enregistrer</Link>
+                      Enregistrer
+
+                      {/* <Link to="/connexion" className="text-white nav-link active ">Enregistrer</Link> */}
 
                     </MDBBtn>
                   </div>
