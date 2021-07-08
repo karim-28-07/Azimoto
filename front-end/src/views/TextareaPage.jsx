@@ -8,6 +8,7 @@ const TextareaPage = () => {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="5"
+            style={{width: "80%"}}
             />
         </div>
     )

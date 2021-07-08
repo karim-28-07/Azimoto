@@ -145,7 +145,6 @@ useEffect(() => {
 },[])
 
 
-
   const signup = async () => {
     try {
       const validationErrors = validateForm()
