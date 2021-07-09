@@ -17,6 +17,7 @@ import Login from './views/Login';
 import QuestionPage from './views/Formulaire';
 import ConnexionAdminPage from './views/ConnexionAdmin';
 import SignupAdmin from './views/SignupAdmin';
+import Modification from './views/Modification';
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
           <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
           <Route path="/connexion/login" exact component={Login} />
           <Route path="/logged/formulaire" exact component={QuestionPage} />
+          <Route path="/modification" exact component={Modification} />
           {/* <Route path="/signup" component={} />
           <Route path="/login">
             <Login changeUserConnected={} />

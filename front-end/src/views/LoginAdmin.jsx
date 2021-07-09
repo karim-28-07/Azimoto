@@ -33,7 +33,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="text-center py-4 mt-3">
-                  <MDBBtn to="/" color="cyan" type="submit">
+                  <MDBBtn to="/modification" color="cyan" type="submit">
                     Login
                   </MDBBtn>
                 </div>
