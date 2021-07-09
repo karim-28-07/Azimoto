@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { MDBFormInline } from 'mdbreact';
 import axios from "axios";
-import Radio from "./Radio"
-import TextareaPage from "./TextareaPage"
+import Radio from "./Radio";
+import TextareaPage from "./TextareaPage";
 
 
 const QuestionPage = () => {
 
-
     const [radioBox, setRadioBox] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     const [textBox, setTextBox] = useState([1]);
 
-   
-
-
     const [questions, setQuestions] = useState([]);
 
+    const [response, setResponses] = useState([]);
 
+
+
+    const changeCollection = (response, id) => {
+        const newFilterResponses = response.filter((elem) => {
+
+            return elem.questionId !== response
+        })
+        const newResponses = [...newFilterResponses, { response, id }]
+
+        console.log(newResponses)
+        setResponses(
+            newResponses
+        )
+    }
+
+    // console.log("changeCollection",changeCollection)
 
     const Form = async (body) => {
         try {
@@ -32,29 +45,14 @@ const QuestionPage = () => {
             console.log(err)
         }
     }
-
-
-    const Reponse = async (body) => {
-        try {
-            const response = await axios.post("http://localhost:8080/questions", body)
-
-            // console.log("response.data",response.data)
-
-            return response.data
-        } catch (error) {
-            console.error(error)
-            return false
-        }
-    }
-
+    
     useEffect(() => {
         Form()
-        // Reponse()
     }, [])
-
+    // console.log("reponse",reponse)
     return (
         <MDBFormInline className="my-5">
-          
+
             <form>
                 {questions.map((elem) => {
                     return (
@@ -63,16 +61,16 @@ const QuestionPage = () => {
                             {radioBox.map((e) => {
                                 if (elem.type === "multiple") {
                                     return <Radio
-                                  
-                                    value={e} 
-                                    id={elem._id} 
+
+                                        value={e}
+                                        id={elem._id}
                                     />
                                 }
 
                             })}
                             {textBox.map((e) => {
                                 if (elem.type === "texte") {
-                                    return <TextareaPage value={e} id={elem._id} model={elem.type} />
+                                    return <TextareaPage value={e} id={elem._id} text={changeCollection} />
                                 }
                             })}
                         </>

@@ -7,16 +7,13 @@ function Radio(props) {
     const [radioRep, setRadioRep] = useState([]);
 
 
-
-    console.log("Radio reponse", radioRep)
-
     return (
         <MDBFormInline>
             <MDBInput
                 onClick={() => setRadio(props.value)}
                 checked={radio === props.value ? true : false}
                 label={props.value}
-                // model={props.model}
+                name={props.id}
                 type='radio'
                 id={props.id}
                 onChange={(e) => setRadioRep(e.target.value)}
