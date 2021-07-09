@@ -7,10 +7,9 @@ const Modification = () => {
 
     const [questions, setQuestions] = useState([])
     const [editing, setEditing] = useState("")
+    const [views, setViews] = useState(false)
 
     useEffect(async () => {
-
-        console.log(2)
 
         try {
 
@@ -28,18 +27,16 @@ const Modification = () => {
         }
     }, [])
 
-    useEffect(async () => {
+    // useEffect(async () => {
+    //     console.log(1)
+    //     try {
+    //         const updateQuestion = await axios.patch("http://localhost:8080/questions/:id/questionupdate")
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // })
 
-        console.log(1)
-        try {
 
-            const updateQuestion = await axios.patch("http://localhost:8080/questions/:id/questionupdate")
-
-        } catch (error) {
-            console.log(error)
-        }
-
-    })
 
 
 
