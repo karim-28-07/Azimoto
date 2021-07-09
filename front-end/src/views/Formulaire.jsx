@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MDBFormInline } from 'mdbreact';
+import { MDBFormInline, MDBBtn } from 'mdbreact';
 import axios from "axios";
 import Radio from "./Radio";
 import TextareaPage from "./TextareaPage";
@@ -15,21 +15,18 @@ const QuestionPage = () => {
     const [response, setResponses] = useState([]);
 
 
-
-    const changeCollection = (response, id) => {
+    const changeCollection = (data) => {
         const newFilterResponses = response.filter((elem) => {
 
-            return elem.questionId !== response
+            return elem.id !== data.id
         })
-        const newResponses = [...newFilterResponses, { response, id }]
+        const newResponses = [...newFilterResponses, data]
 
-        console.log(newResponses)
         setResponses(
             newResponses
         )
     }
-
-    // console.log("changeCollection",changeCollection)
+    console.log("response", response)
 
     const Form = async (body) => {
         try {
@@ -45,11 +42,23 @@ const QuestionPage = () => {
             console.log(err)
         }
     }
-    
+
+
+    const userReponse = async (body) => {
+        try {
+            await axios.post("http://localhost:8080/answers", response)
+
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+
     useEffect(() => {
         Form()
     }, [])
-    // console.log("reponse",reponse)
     return (
         <MDBFormInline className="my-5">
 
@@ -61,7 +70,7 @@ const QuestionPage = () => {
                             {radioBox.map((e) => {
                                 if (elem.type === "multiple") {
                                     return <Radio
-
+                                        changeAnswerText={changeCollection}
                                         value={e}
                                         id={elem._id}
                                     />
@@ -70,7 +79,7 @@ const QuestionPage = () => {
                             })}
                             {textBox.map((e) => {
                                 if (elem.type === "texte") {
-                                    return <TextareaPage value={e} id={elem._id} text={changeCollection} />
+                                    return <TextareaPage value={e} id={elem._id} changeAnswerText={changeCollection} />
                                 }
                             })}
                         </>
@@ -78,6 +87,12 @@ const QuestionPage = () => {
                 })}
 
             </form>
+
+            <MDBBtn onClick={userReponse} color="cyan">
+
+                Enregistrer
+
+            </MDBBtn>
 
         </MDBFormInline>
 

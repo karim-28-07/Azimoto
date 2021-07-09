@@ -8,7 +8,6 @@ import {
   MDBBtn,
   MDBCard,
   MDBCardBody,
-  Link,
   MDBFormInline,
 } from 'mdbreact';
 
@@ -16,9 +15,6 @@ import { useHistory } from 'react-router-dom'
 import { postSignup } from '../utils/network';
 import axios from "axios";
 
-
-
-// class Signup extends Component {
 
 const Signup = () => {
 
@@ -88,18 +84,6 @@ const Signup = () => {
 
 
   const [radio, setRadio] = useState("");
-
-  // state = {
-  //   radio: 0
-  // };
-
-  // onClick = nr => () => {
-  //   this.setState({
-  //     radio: nr
-  //   });
-  // };
-
-
 
   const program = async (body) => {
     try {
@@ -228,9 +212,6 @@ const Signup = () => {
                     <label icon="user" htmlFor="exampleDisabled" className="disabled">Tu es un(e)</label>
 
 
-
-
-
                     <MDBFormInline className="my-5">
 
                       <MDBInput
@@ -294,7 +275,6 @@ const Signup = () => {
 
 
 
-
                     <div className="my-5">
                       <select className="browser-default custom-select" onChange={(e) => setParcourSelect(e.target.value)}>
                         <option>Choisis ton parcour</option>
@@ -302,8 +282,6 @@ const Signup = () => {
                           parcour.map(elem => {
                             return (
                               <option value={elem._id}>{elem.name}</option>
-
-
                             )
                           })
                         }
@@ -336,8 +314,6 @@ const Signup = () => {
                     <MDBBtn onClick={signup} color="cyan">
 
                       Enregistrer
-
-                      {/* <Link to="/connexion" className="text-white nav-link active ">Enregistrer</Link> */}
 
                     </MDBBtn>
                   </div>
