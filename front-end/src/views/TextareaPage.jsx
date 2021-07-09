@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 const TextareaPage = (props) => {
-    const [Textarea, setTextarea] = useState({});
-    
-  
-    console.log("TextareaPage",Textarea);
-
-    // console.log("props.text",props.text);
+    const user = "60e46055cb0e2536f45ab107"
 
     return (
         <div className="form-group">
             <textarea
-            className="form-control"
-           id={props.id}
-            rows="5"
-            onChange={(e) => setTextarea({response:e.target.value, id:props.id})}
-            style={{width: "80%"}}
+                className="form-control"
+                id={props.id}
+                rows="5"
+                onChange={(e) => props.changeAnswerText({ valueText: e.target.value, question: props.id , user })}
+                style={{ width: "80%" }}
             />
         </div>
     )
