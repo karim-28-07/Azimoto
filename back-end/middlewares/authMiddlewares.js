@@ -10,7 +10,7 @@ const verifyTokenUser = async (req, res, next) => {
         const result = jwt.verify(token, config.secret) // vérifier le token de user avec le mot secret 
 
         if (result.id) {
-            const user = await userModel.findById({ _id: result.id }).lean() // chercher le user avec id dans la BD
+            const user = await userModel.findById({_id: result.id }).lean() // chercher le user avec id dans la BD
 
             req.user = user
             next()
