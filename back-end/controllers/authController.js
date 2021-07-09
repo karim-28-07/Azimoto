@@ -38,21 +38,32 @@ const signup = async (req, res) => {
 }
 
 const login = async (req, res) => {
+    const tonkenExpire = "4h"
     try {
-        const user = req.user
+        // const user = req.user
+        const email = req.body.email
+        const password = req.body.password
+        const validUser = await userModel.findOne({email})
 
-        const result = bcryptjs.compareSync(req.body.password, user.password)
+        console.log("validUser", validUser)
+        const result = bcryptjs.compareSync(password, validUser.password)
+
+        if(result) {
+            console.log("true")
+        }
+
+        // res.json({result})
 
         if (result) {
             const token = jwt.sign(
                 {
-                    id: user._id
+                    id: result._id
                 }, config.secret,
                 {
-                    expiresIn: 60 * 60
+                    expiresIn: tonkenExpire
                 })
 
-            res.json({ message: "You're now login!", token })
+            res.json({ message: "You're now login!", token, tonkenExpire })
         } else {
             res.status(401).json({ message: "Login failed" })
         }
