@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const adminModel = require("../models/admin")
+const bcryptjs = require("bcryptjs")
 
 mongoose.connect("mongodb://localhost:27017/azimutoDB", (err) => {
     if (err) {
