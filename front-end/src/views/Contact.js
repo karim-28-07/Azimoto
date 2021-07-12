@@ -1,11 +1,9 @@
 import React from "react";
-import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBBtn, MDBInput, MDBView, MDBContainer, MDBMask } from "mdbreact";
+import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBBtn, MDBInput, MDBView } from "mdbreact";
 
 const ContactPage = () => {
   return (
     <MDBView className="purple-slight">
-      {/* <MDBMask className='rgba-purple-slight ' /> */}
-
 
       <section className="mb-5 " style={{ marginTop: "15vmax" }}>
 
