@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
+=======
+import React from "react";
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody,Link } from 'mdbreact';
+>>>>>>> ft-m-modifier
 
 const Login= () => {
   let history = useHistory()
@@ -56,8 +61,14 @@ const Login= () => {
                   />
                 </div>
                 <div className="text-center py-4 mt-3">
+<<<<<<< HEAD
                   <MDBBtn to="/logged/formulaire" color="cyan" type="submit" 
                   onClick={validLogin}>Login</MDBBtn>
+=======
+                  <MDBBtn  color="cyan" type="submit">
+                  <Link to="/logged/formulaire" className="nav-link active text-white ">Login</Link>
+                  </MDBBtn>
+>>>>>>> ft-m-modifier
                 </div>
               </>
             </MDBCardBody>
