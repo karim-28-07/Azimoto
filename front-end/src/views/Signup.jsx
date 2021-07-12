@@ -10,6 +10,10 @@ import {
   MDBCardBody,
   MDBFormInline,
 } from 'mdbreact';
+import {
+  BrowserRouter as Router,
+  Redirect
+} from "react-router-dom";
 
 import { useHistory } from 'react-router-dom'
 import { postSignup } from '../utils/network';
@@ -152,7 +156,8 @@ const Signup = () => {
   }
 
   if (userCreated) {
-    return ("User created!")
+    // return ("User created!")
+    return <Redirect to="/" />
   } else {
 
     return (

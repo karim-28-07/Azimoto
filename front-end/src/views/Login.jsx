@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody,Link } from 'mdbreact';
 
 
 
@@ -37,8 +37,8 @@ const Login = () => {
                   />
                 </div>
                 <div className="text-center py-4 mt-3">
-                  <MDBBtn to="/logged/formulaire" color="cyan" type="submit">
-                    Login
+                  <MDBBtn  color="cyan" type="submit">
+                  <Link to="/logged/formulaire" className="nav-link active text-white ">Login</Link>
                   </MDBBtn>
                 </div>
               </form>
