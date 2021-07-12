@@ -41,15 +41,12 @@ const Home = () => {
                 </MDBCol>
             </MDBRow> */}
 
-
-
             <MDBView src='https://mdbcdn.b-cdn.net/img/Photos/Others/gradient2.png'>
                 <MDBMask className='rgba-purple-slight ' />
                 <MDBContainer
                     style={{ height: '100%', width: '100%' }}
                     className='d-flex justify-content-center align-items-center pt-0 mt-5'
                 >
-
 
                     <MDBCol lg="7">
 
@@ -88,7 +85,6 @@ const Home = () => {
                     </MDBCol>
                 </MDBContainer>
             </MDBView>
-
 
             <MDBCardBody className="text-center my-5" >
 
