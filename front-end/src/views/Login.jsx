@@ -1,14 +1,19 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  Link
+} from 'mdbreact';
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
-=======
-import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody,Link } from 'mdbreact';
->>>>>>> ft-m-modifier
 
-const Login= () => {
+
+const Login = () => {
   let history = useHistory()
 
   const [email, setEmail] = useState("")
@@ -17,13 +22,13 @@ const Login= () => {
   const validLogin = async () => {
     try {
       console.log("je suis validLogin", validLogin)
-      const response = await axios.post("http://localhost:8080/user/login", { email : email, password: password })
+      const response = await axios.post("http://localhost:8080/user/login", { email: email, password: password })
       console.log("Login User response", response)
 
       if (response.data.error) {
 
         alert("Email or password incorrect")
-        
+
       } else {
         const token = response.data.token
         // const email = response.data.validUser.email
@@ -38,7 +43,7 @@ const Login= () => {
         history.push("/logged/formulaire")
       }
     } catch (error) {
-      alert("Email or password incorrect")
+      // alert("Email or password incorrect")
       console.error("error :", error)
     }
   }
@@ -60,15 +65,14 @@ const Login= () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+
                 <div className="text-center py-4 mt-3">
-<<<<<<< HEAD
-                  <MDBBtn to="/logged/formulaire" color="cyan" type="submit" 
-                  onClick={validLogin}>Login</MDBBtn>
-=======
-                  <MDBBtn  color="cyan" type="submit">
-                  <Link to="/logged/formulaire" className="nav-link active text-white ">Login</Link>
+                  {/* <MDBBtn to="/logged/formulaire" color="cyan" type="submit"
+                    onClick={validLogin}>Login</MDBBtn> */}
+
+                  <MDBBtn onClick={validLogin} color="cyan" type="submit">
+                    <Link to="/logged/formulaire" className="nav-link active text-white ">Login</Link>
                   </MDBBtn>
->>>>>>> ft-m-modifier
                 </div>
               </>
             </MDBCardBody>

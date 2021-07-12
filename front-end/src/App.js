@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  BrowserRouter, Route,Switch,
+  BrowserRouter, Route, Switch,
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -28,51 +28,10 @@ import Navbar from './components/Navbar';
 
 function App() {
 
-<<<<<<< HEAD
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link active">Accueil</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/Qui" className="nav-link active">Qui</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/nos-programmes" className="nav-link active">Nos Programmes</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/participer" className="nav-link active">Participer</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/Contact" className="nav-link active">Contact</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/qui" exact component={Qui} />
-          <Route path="/nos-programmes" exact component={Programmes} />
-          <Route path="/participer" exact component={Participer} />
-          <Route path="/contact" exact component={ContactPage} />
-          <Route path="/connexion" exact component={ConnexionPage} />
-          <Route path="/professionnels" exact component={ConnexionAdminPage} />
-          <Route path="/connexion/signup" exact component={Signup} />
-          <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
-          <Route path="/connexion/login" exact component={Login} />
-          <Route path="/connexion/loginadmin" exact component={LoginAdmin} />
-          <Route path="/logged/formulaire" exact component={QuestionPage} />
-          <Route path="/modification" exact component={Modification} />
-          {/* <Route path="/signup" component={} />
-=======
 
 
   return (
     <BrowserRouter>
-
-
 
       <Switch>
         <Route path="/" exact component={Home} />
@@ -85,10 +44,10 @@ function App() {
         <Route path="/connexion/signup" exact component={Signup} />
         <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
         <Route path="/connexion/login" exact component={Login} />
+        <Route path="/connexion/loginadmin" exact component={LoginAdmin} />
         <Route path="/logged/formulaire" exact component={QuestionPage} />
         <Route path="/modification" exact component={Modification} />
         {/* <Route path="/signup" component={} />
->>>>>>> ft-m-modifier
           <Route path="/login">
             <Login changeUserConnected={} />
           </Route>
@@ -100,10 +59,7 @@ function App() {
       <Navbar />
       <Footer />
     </BrowserRouter>
-<<<<<<< HEAD
-=======
 
->>>>>>> ft-m-modifier
   );
 }
 
