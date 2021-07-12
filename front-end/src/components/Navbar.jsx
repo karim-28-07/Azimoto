@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     MDBNavbar,
     MDBCol,
@@ -21,7 +21,7 @@ import '../assets/styles/Home.css';
 import Logo from "../assets/images/Logo.png"
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     const overlay = (
         <div
@@ -74,7 +74,12 @@ const Navbar = () => {
                             <MDBNavItem>
                                 <MDBBtn rounded className='btn-purple'>
                                     {/* <MDBIcon icon='user' className=' mr-2' />  */}
-                                <MDBNavLink className='loco-con text-light' to="/connexion">Se connecter</MDBNavLink>
+                                    {props.userConnected
+                                        ?
+                                        <MDBNavLink className='loco-con text-light' to="/" onClick={props.logout}>Se déconnecter</MDBNavLink>
+                                        :
+                                        <MDBNavLink className='loco-con text-light' to="/connexion">Se connecter</MDBNavLink>
+                                    }
                                 </MDBBtn>
                             </MDBNavItem>
                         </MDBNavbarNav>

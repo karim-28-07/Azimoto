@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 
-const Login = () => {
+const Login = (props) => {
   let history = useHistory()
 
   const [email, setEmail] = useState("")
@@ -37,6 +37,8 @@ const Login = () => {
         // console.log("email :", email)
 
         localStorage.setItem("token", `${token}`)
+
+        props.connectUser()
 
         console.log("localStorage :", localStorage.getItem("token"));
 
