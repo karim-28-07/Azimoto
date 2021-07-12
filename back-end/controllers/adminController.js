@@ -22,15 +22,17 @@ const signupAdmin = async (req, res) => {
 
 const loginAdmin = async (req, res) => {
     try {
-        const admin = req.admin // récupérer les données de l'admin
+        const email = req.body.email
+        const password = req.body.password
+        const validAdmin = await adminModel.findOne({ email : email })
 
-        const result = bcryptjs.compareSync(req.body.password, admin.password) // comparer les deux MDP 
+        const result = bcryptjs.compareSync(password, validAdmin.password) // comparer les deux MDP 
 
         if (result) {                      // si le resultat est true
             
             const token = jwt.sign(        // on creer un token pour l'admin
                 {
-                    id: admin._id
+                    id: validAdmin._id
                 }, config.secret,
                 {
                     expiresIn: 60 * 60

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const TextareaPage = (props) => {
     const user = "60e46055cb0e2536f45ab107"

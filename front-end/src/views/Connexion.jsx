@@ -27,6 +27,8 @@ const ConnexionPage = () => {
               <MDBBtn color="cyan" rounded>
               
               <Link to="/connexion/login" className="text-white nav-link active ">Me Connecter</Link>
+              {/* <Link to="/user/login" className="text-white nav-link active ">Me Connecter</Link> */}
+
 
               </MDBBtn>
             </MDBCardBody>
