@@ -1,0 +1,32 @@
+#caltoaction .view {
+    min-height: 100vh !important;
+    height: unset !important;
+  }
+button {
+    border-radius: 35px !important;
+}
+
+.btn-1{
+  font-size: 1.2rem;
+}
+
+.navbarFS{
+  font-size: 1.3rem;
+}
+
+.b-Right {
+  display: contents !important;
+  color: rebeccapurple !important;
+}
+
+.logo{
+  width: 12%;
+}
+
+.loco-con {
+  display: contents;
+}
+
+.purple-slight {
+  background-color: #f3e5f5;
+}
