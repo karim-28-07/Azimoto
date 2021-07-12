@@ -51,7 +51,7 @@ const FooterPage = () => {
                 <a href="/Contact">CONTACT</a>
               </li>
               <li className="list-unstyled">
-                <a href="/professionnels">Professionnels</a>
+                <a href="/connexion/loginadmin">Professionnels</a>
               </li>
               <a href={Plaquette} className="light-white-text" target="_blank">
                 <h6 className="font-weight-bold">
