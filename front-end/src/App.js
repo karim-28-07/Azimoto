@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BrowserRouter, Route, Switch,
 } from "react-router-dom";
@@ -28,6 +28,20 @@ import Navbar from './components/Navbar';
 
 function App() {
 
+  const [userConnected, setUserConnected] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem("token") || false
+
+    if (token) {
+      setUserConnected(true)
+    }
+  }, [])
+
+  const logout = () => {
+    localStorage.removeItem("token")
+    setUserConnected(false)
+  }
 
 
   return (
@@ -43,20 +57,22 @@ function App() {
         <Route path="/professionnels" exact component={ConnexionAdminPage} />
         <Route path="/connexion/signup" exact component={Signup} />
         <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
-        <Route path="/connexion/login" exact component={Login} />
-        <Route path="/connexion/loginadmin" exact component={LoginAdmin} />
+        {/* <Route path="/connexion/login" exact component={Login} /> */}
+        <Route path="/connexion/loginadmin">
+          <LoginAdmin connectUser={() => setUserConnected(true)} />
+        </Route>
         <Route path="/logged/formulaire" exact component={QuestionPage} />
         <Route path="/modification" exact component={Modification} />
+        <Route path="/connexion/login">
+          <Login connectUser={() => setUserConnected(true)} />
+        </Route>
         {/* <Route path="/signup" component={} />
-          <Route path="/login">
-            <Login changeUserConnected={} />
-          </Route>
           <Route path="/admin">
             <Admin disconnectUser={} />
           </Route> */}
       </Switch>
 
-      <Navbar />
+      <Navbar logout={logout} userConnected={userConnected} />
       <Footer />
     </BrowserRouter>
 

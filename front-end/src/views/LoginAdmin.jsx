@@ -3,45 +3,48 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } 
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
-const LoginAdmin = () => {
+const LoginAdmin = (props) => {
 
-    let history = useHistory()
-  
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-  
-    const validLoginAdmin = async () => {
-      try {
-        console.log("je suis validLoginAdmin")
-        console.log("email", email)
-        console.log("password", password)
+  let history = useHistory()
 
-        const response = await axios.post("http://localhost:8080/login/loginadmin", { email : email, password: password })
-        
-        console.log("Login User response", response)
-  
-        if (response.data.error) {
-  
-          alert("Email or password incorrect")
-          
-        } else {
-          const token = response.data.token
-          // const email = response.data.validUser.email
-  
-          console.log("token", token)
-          // console.log("email :", email)
-  
-          localStorage.setItem("token", `${token}`)
-  
-          console.log("localStorage :", localStorage.getItem("token"));
-  
-          history.push("/modification")
-        }
-      } catch (error) {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const validLoginAdmin = async () => {
+    try {
+      console.log("je suis validLoginAdmin")
+      console.log("email", email)
+      console.log("password", password)
+
+      const response = await axios.post("http://localhost:8080/login/loginadmin", { email: email, password: password })
+
+      console.log("Login User response", response)
+
+      if (response.data.error) {
+
         alert("Email or password incorrect")
-        console.error("error :", error)
+
+      } else {
+        const token = response.data.token
+        // const email = response.data.validUser.email
+
+        console.log("token", token)
+        // console.log("email :", email)
+
+        localStorage.setItem("token", `${token}`)
+
+        props.connectUser()
+
+        console.log("localStorage :", localStorage.getItem("token"));
+
+        history.push("/modification")
       }
+    } catch (error) {
+      alert("Email or password incorrect")
+      console.error("error :", error)
     }
+  }
+
 
 
   return (
@@ -53,7 +56,7 @@ const LoginAdmin = () => {
               <>
                 <p className="h4 text-center py-4">LoginAdmin</p>
                 <div className="grey-text">
-                
+
                   <MDBInput
                     label="Your email"
                     icon="envelope"
@@ -64,7 +67,7 @@ const LoginAdmin = () => {
                     success="right"
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  
+
                   <MDBInput
                     label="Your password"
                     icon="lock"
