@@ -76,7 +76,7 @@ const Login = (props) => {
                       <div className="text-center py-4 mt-3">
                       
 
-                        <MDBBtn outline color='purple' className="mb-5 btn-rounded " >
+                        <MDBBtn onClick = {validLogin} outline color='purple' className="mb-5 btn-rounded " >
                           <MDBIcon icon='user' className='mr-2 ' />
                           <Link to="/logged/formulaire" className=" nav-link active b-Right ">Se connecter </Link>
                         </MDBBtn>
