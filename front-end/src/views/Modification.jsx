@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBContainer,MDBView, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter,MDBMask } from 'mdbreact';
 import { useState, useEffect } from "react";
 import axios from "axios"
 import EditQuestion from "../components/EditQuestion";
@@ -37,14 +37,25 @@ const Modification = () => {
     }
     console.log("deletId", deletId)
     if (views === "List") {
-        return <ListQuestions setEditingId={setEditingId} questions={questions} setViews={setViews} setDeletId= {setDeletId} setViews= {setViews} />
+        return <ListQuestions setEditingId={setEditingId} questions={questions} setViews={setViews} setDeletId={setDeletId} setViews={setViews} />
     } else if (views === "Edit") {
-        return <EditQuestion editingId={editingId} setEditingId={setEditingId} setQuestions={setQuestions} setViews= {setViews} />
-    }else if(views === "Delete"){
-        return <div>
-            <h2>Es que vous êtes sur de suprimmer la question ?</h2>
-            <MDBBtn color="cyan" rounded onClick={deleteQuestion}>Confirmer</MDBBtn>
-        </div>
+        return <EditQuestion editingId={editingId} setEditingId={setEditingId} setQuestions={setQuestions} setViews={setViews} />
+    } else if (views === "Delete") {
+        return (
+            <MDBView className="purple-slight ">
+
+                <div className="container my-5 ">
+
+                    <section className="mb-5" style={{ marginTop: "15vmax" }}>
+                        <div>
+                            <h2>Es que vous êtes sur de suprimmer la question ?</h2>
+                            <MDBBtn color="cyan" rounded onClick={deleteQuestion}>Confirmer</MDBBtn>
+                        </div>
+                    </section>
+
+                </div>
+            </MDBView>
+        )
     }
 }
 
