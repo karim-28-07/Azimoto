@@ -63,9 +63,10 @@ const QuestionPage = () => {
         <MDBFormInline className="my-5">
 
             <form>
-                {questions.map((elem) => {
+                {questions.map((elem, index) => {
                     return (
                         <>
+                            {index === 19 && <h2>NE PAS RÉPONDRE À CES QUESTIONS AVANT D'AVOIR FINI LE PARCOURS AVEC AZIMUTO</h2> } 
                             <h3>{elem.description}</h3>
                             {radioBox.map((e) => {
                                 if (elem.type === "multiple") {

@@ -14,6 +14,7 @@ import ContactPage from './views/Contact';
 import ConnexionPage from './views/Connexion';
 import Signup from './views/Signup';
 import Login from './views/Login';
+import LoginAdmin from './views/LoginAdmin';
 import QuestionPage from './views/Formulaire';
 import ConnexionAdminPage from './views/ConnexionAdmin';
 import SignupAdmin from './views/SignupAdmin';
@@ -46,15 +47,10 @@ function App() {
                 <li className="nav-item">
                   <Link to="/Contact" className="nav-link active">Contact</Link>
                 </li>
-
               </ul>
-              
-
             </div>
           </div>
         </nav>
-
-
 
         <Switch>
           <Route path="/" exact component={Home} />
@@ -67,6 +63,7 @@ function App() {
           <Route path="/connexion/signup" exact component={Signup} />
           <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
           <Route path="/connexion/login" exact component={Login} />
+          <Route path="/connexion/loginadmin" exact component={LoginAdmin} />
           <Route path="/logged/formulaire" exact component={QuestionPage} />
           <Route path="/modification" exact component={Modification} />
           {/* <Route path="/signup" component={} />
@@ -80,7 +77,6 @@ function App() {
       </div>
       <Footer/>
     </BrowserRouter>
-    
   );
 }
 

@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const { debug } = require("./middlewares/debug")
+// const router = express.Router()
 
 // const routes = require("./routes/index.js")
 const authRoutes  = require("./routes/authRoutes")
@@ -21,9 +22,9 @@ const adminRoutes = require("./routes/adminRoutes")
 const teamRoutes = require("./routes/teamRoutes")
 
 const answersRoutes = require("./routes/answersRoutes")
-
-
 const { port, mongoURL } = require('./utils/config')
+
+const router = require("./routes/authRoutes")
 
 
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
@@ -41,6 +42,8 @@ app.use(cors())
 app.use(express.json())
 
 app.use(debug)
+
+app.use("/", router)        //http://localhost:8080/user/login
 
 app.use("/user", authRoutes)
 
