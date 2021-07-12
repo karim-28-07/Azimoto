@@ -40,7 +40,7 @@ function App() {
         <Route path="/participer" exact component={Participer} />
         <Route path="/contact" exact component={ContactPage} />
         <Route path="/connexion" exact component={ConnexionPage} />
-        <Route path="/professionnels" exact component={ConnexionAdminPage} />
+        {/* <Route path="/professionnels" exact component={ConnexionAdminPage} /> */}
         <Route path="/connexion/signup" exact component={Signup} />
         <Route path="/connexion/signup-admin" exact component={SignupAdmin} />
         <Route path="/connexion/login" exact component={Login} />
