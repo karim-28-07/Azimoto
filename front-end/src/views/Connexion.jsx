@@ -1,14 +1,14 @@
 import React from "react";
-import { MDBRow, MDBCol, MDBCardBody, MDBBtn, MDBView, MDBMask, Link } from "mdbreact";
+import { MDBRow, MDBCol, MDBCardBody, MDBBtn, MDBView, MDBMask, Link, MDBIcon } from "mdbreact";
 
 const ConnexionPage = () => {
   return (
     <MDBView className="purple-slight text-center">
       <div className="container my-5" >
 
-      <section className="mb-5" style={{ marginTop: "15vmax" }}>
+        <section className="mb-5" style={{ marginTop: "15vmax" }}>
 
-          <MDBMask  />
+          <MDBMask />
 
           <h2 className="h1-responsive font-weight-bold my-5">
             Espace Jeune
@@ -30,11 +30,11 @@ const ConnexionPage = () => {
 
                 <h4 className="font-weight-bold mb-3">Tu as déjà un compte ? Connecte-toi vite ici !</h4>
 
-                <MDBBtn color="cyan" rounded>
-
-                  <Link to="/connexion/login" className="text-white nav-link active ">Me Connecter</Link>
-
+                <MDBBtn outline color='purple' className="mb-5 btn-rounded " >
+                  <MDBIcon icon='user' className='mr-2 ' />
+                  <Link to="/connexion/login" className=" nav-link active b-Right ">Me Connecter </Link>
                 </MDBBtn>
+
               </MDBCardBody>
             </MDBCol>
 
@@ -53,10 +53,11 @@ const ConnexionPage = () => {
 
                 <h4 className="font-weight-bold mb-3">C'est la première fois que tu viens ? Clique ici</h4>
 
-                <MDBBtn color="cyan" rounded>
-                  <Link to="/connexion/signup" className="text-white nav-link active ">Créer mon compte</Link>
-
+                <MDBBtn outline color='purple' className="mb-5 btn-rounded " >
+                  <MDBIcon icon='user' className='mr-2 ' />
+                  <Link to="/connexion/signup" className=" nav-link active b-Right ">Créer mon compte </Link>
                 </MDBBtn>
+
               </MDBCardBody>
             </MDBCol>
           </MDBRow>

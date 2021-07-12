@@ -1,5 +1,4 @@
 import {
-    MDBNavbar,
     MDBMask,
     MDBRow,
     MDBCol,
@@ -25,21 +24,6 @@ const Home = () => {
 
     return (
         <div >
-            {/* 
-            <MDBRow>
-                <MDBCol md='12' className='mb-4 text-center'>
-                    <h1 className='display-4 font-weight-bold mb-4 pt-md-5 pt-5'>
-                        Discute avec Azimuto et découvre les métiers et les formations qui te correspondent
-                    </h1>
-                    <MDBBtn className="text-light" rounded color="cyan" >
-                        <Link to="/professionnels" className="nav-link active text-white ">Professionnels : en savoir plus</Link>
-                    </MDBBtn>
-                    <MDBBtn className="text-light"  color="cyan" rounded>
-                        <Link to="/connexion" className="nav-link active text-white ">Jeunes : accéder à mon espace Azimuto</Link>
-                    </MDBBtn>
-
-                </MDBCol>
-            </MDBRow> */}
 
             <MDBView src='https://mdbcdn.b-cdn.net/img/Photos/Others/gradient2.png'>
                 <MDBMask className='rgba-purple-slight ' />
@@ -289,9 +273,6 @@ const Home = () => {
 
 
             </MDBCardBody>
-
-
-
 
         </div>
     );

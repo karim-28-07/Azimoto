@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MDBFormInline, MDBBtn } from 'mdbreact';
+import { MDBFormInline, MDBBtn, MDBMask, MDBView } from 'mdbreact';
 import axios from "axios";
 import Radio from "./Radio";
 import TextareaPage from "./TextareaPage";
@@ -60,14 +60,17 @@ const QuestionPage = () => {
         Form()
     }, [])
     return (
-        <MDBFormInline className="my-5">
+        <MDBFormInline className=" purple-slight">
 
             <form>
                 {questions.map((elem, index) => {
                     return (
                         <>
-                            {index === 19 && <h2>NE PAS RÉPONDRE À CES QUESTIONS AVANT D'AVOIR FINI LE PARCOURS AVEC AZIMUTO</h2> } 
-                            <h3>{elem.description}</h3>
+                            {index === 19 && <h2 className="text-danger mt-5">NE PAS RÉPONDRE À CES QUESTIONS AVANT D'AVOIR FINI LE PARCOURS AVEC AZIMUTO</h2>}
+                            <MDBView className=" text-center ">
+
+                                <h3 style={{ marginTop: "15vmax" }}>{elem.description}</h3>
+                            </MDBView>
                             {radioBox.map((e) => {
                                 if (elem.type === "multiple") {
                                     return <Radio
@@ -88,12 +91,11 @@ const QuestionPage = () => {
                 })}
 
             </form>
-
-            <MDBBtn onClick={userReponse} color="cyan">
-
-                Enregistrer
-
-            </MDBBtn>
+            <MDBView className="col-12 text-center my-5">
+                <MDBBtn onClick={userReponse} className="col-2" color="cyan">
+                    Enregistrer
+                </MDBBtn>
+            </MDBView>
 
         </MDBFormInline>
 
